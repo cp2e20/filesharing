@@ -6,11 +6,9 @@ from datetime import datetime
 
 HOST = 'localhost'
 PORT = 5002
-FILES_DIR = 'files'
+UPLOAD = 'uploaded'
 LOG_FILE = 'logs/server_log.txt'
 
-os.makedirs(FILES_DIR, exist_ok=True)
-os.makedirs('logs', exist_ok=True)
 
 def log(msg):
     with open(LOG_FILE, 'a') as f:
@@ -28,7 +26,7 @@ def handle_client(conn, addr):
             command = cmd_parts[0]
 
             if command == "LIST":
-                files = os.listdir(FILES_DIR)
+                files = os.listdir(UPLOAD)
                 conn.send('\n'.join(files).encode())
 
             elif command == "UPLOAD":
@@ -36,7 +34,7 @@ def handle_client(conn, addr):
                 size = int(cmd_parts[2])
                 conn.send(b"READY")
 
-                with open(f"{FILES_DIR}/{filename}", 'wb') as f:
+                with open(f"{UPLOAD}/{filename}", 'wb') as f:
                     bytes_received = 0
                     while bytes_received < size:
                         chunk = conn.recv(1024)
@@ -49,7 +47,7 @@ def handle_client(conn, addr):
 
             elif command == "DOWNLOAD":
                 filename = cmd_parts[1]
-                filepath = f"{FILES_DIR}/{filename}"
+                filepath = f"{UPLOAD}/{filename}"
                 if os.path.exists(filepath):
                     size = os.path.getsize(filepath)
                     conn.send(f"{size}".encode())

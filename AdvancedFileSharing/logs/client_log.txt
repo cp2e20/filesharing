@@ -1,0 +1,14 @@
+[2025-04-12 15:10:08] Connected to server at localhost:5002
+[2025-04-12 15:10:10] Uploaded file 'lana.txt' (0 bytes) to server.
+[2025-04-12 15:10:30] Downloaded file 'lana.txt' (0 bytes) from server.
+[2025-04-12 15:10:56] Download failed: File 'testagain.txt' not found on server.
+[2025-04-12 15:14:48] Download failed: File 'testagain.txt' not found on server.
+[2025-04-12 15:14:54] Unknown command entered: 'EXIST'
+[2025-04-12 15:14:59] Client exited session.
+[2025-04-12 15:14:59] Socket closed.
+[2025-04-12 15:15:45] Connected to server at localhost:5002
+[2025-04-12 15:15:55] Client exited session.
+[2025-04-12 15:15:55] Socket closed.
+[2025-04-12 15:16:04] Connected to server at localhost:5002
+[2025-04-12 15:16:10] Client exited session.
+[2025-04-12 15:16:10] Socket closed.
