@@ -32,7 +32,8 @@ def handle_client(conn, addr):
             elif command == "UPLOAD":
                 filename = cmd_parts[1]
                 size = int(cmd_parts[2])
-                conn.send(b"READY")
+                conn.send("READY".encode())
+
 
                 with open(f"{UPLOAD}/{filename}", 'wb') as f:
                     bytes_received = 0
@@ -52,12 +53,12 @@ def handle_client(conn, addr):
                     size = os.path.getsize(filepath)
                     conn.send(f"{size}".encode())
                     ack = conn.recv(1024)
-                    if ack == b"READY":
+                    if ack == ("READY".encode()):
                         with open(filepath, 'rb') as f:
                             conn.sendfile(f)
                     log(f"Sent {filename} to {addr}")
                 else:
-                    conn.send(b"ERROR")
+                    conn.send("ERROR".encode())
 
     except Exception as e:
         log(f"Error with {addr}: {e}")

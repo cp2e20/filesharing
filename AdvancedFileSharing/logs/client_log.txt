@@ -12,3 +12,13 @@
 [2025-04-12 15:16:04] Connected to server at localhost:5002
 [2025-04-12 15:16:10] Client exited session.
 [2025-04-12 15:16:10] Socket closed.
+[2025-04-12 15:20:07] Connected to server at localhost:5002
+[2025-04-12 15:20:11] Requested list of files from server.
+[2025-04-12 15:36:35] Connected to server at localhost:5002
+[2025-04-12 15:36:39] Requested list of files from server.
+[2025-04-12 15:36:45] Uploaded file 'mike.txt' (0 bytes) to server.
+[2025-04-12 15:36:53] Uploaded file 'mike.txt' (0 bytes) to server.
+[2025-04-12 15:37:11] Download failed: File 'testagain.txt' not found on server.
+[2025-04-12 15:37:20] Uploaded file 'testagain.txt' (0 bytes) to server.
+[2025-04-12 15:37:29] Client exited session.
+[2025-04-12 15:37:29] Socket closed.

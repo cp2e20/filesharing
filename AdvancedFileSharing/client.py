@@ -29,7 +29,7 @@ def upload_file(sock, path):
 
     size = os.path.getsize(path)
     sock.send(f"UPLOAD {filename} {size}".encode())
-    if sock.recv(1024) == b"READY":
+    if sock.recv(1024) == "READY".encode():
         with open(path, 'rb') as f:
             sock.sendfile(f)
         print(f"Uploaded {filename}")
@@ -40,13 +40,13 @@ def upload_file(sock, path):
 def download_file(sock, filename):
     sock.send(f"DOWNLOAD {filename}".encode())
     size_data = sock.recv(1024)
-    if size_data == b"ERROR":
+    if size_data == ("ERROR".encode()):
         print("File not found on server.")
         log(f"Download failed: File '{filename}' not found on server.")
         return
 
     size = int(size_data.decode())
-    sock.send(b"READY")
+    sock.send("READY".encode())
     filepath = f"{DOWNLOAD}/{filename}"
     with open(filepath, 'wb') as f:
         bytes_received = 0
