@@ -2,33 +2,37 @@ import socket
 import os
 from datetime import datetime
 
+#server configuration
 HOST = 'localhost'
 PORT = 5002
-DOWNLOAD = 'downloaded'
-LOG_FILE = 'logs/client_log.txt'
+DOWNLOAD = 'downloaded'    #directory to save the dowloaded files
+LOG_FILE = 'logs/client_log.txt'   #log file for clients
 
 
-
+#function to log events with a timestamp
 def log(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(LOG_FILE, 'a') as f:
         f.write(f"[{timestamp}] {message}\n")
 
+#function to request the files and show the list of them on the server
 def list_files(sock):
-    sock.send("LIST".encode())
-    files = sock.recv(4096).decode()
+    sock.send("LIST".encode())   #send the list command to the server
+    files = sock.recv(4096).decode()    #receive and decode the file list
     print("Files on Server:\n", files)
     log("Requested list of files from server.")
 
+# function to upload the file to the server
 def upload_file(sock, path):
-    filename = os.path.basename(path)
-    if not os.path.exists(path):
+    filename = os.path.basename(path)  #extract filename
+    if not os.path.exists(path):    #check if the file exists before you upload
         print("File does not exist.")
         log(f"Upload failed: File '{path}' does not exist.")
         return
 
-    size = os.path.getsize(path)
-    sock.send(f"UPLOAD {filename} {size}".encode())
+    size = os.path.getsize(path)     #get the size of file
+    sock.send(f"UPLOAD {filename} {size}".encode()) #send the upload command and encode it
+    #wait for the server to be ready before sending the file 
     if sock.recv(1024) == "READY".encode():
         with open(path, 'rb') as f:
             sock.sendfile(f)
@@ -37,17 +41,19 @@ def upload_file(sock, path):
     else:
         log(f"Upload aborted: Server did not respond with READY for '{filename}'.")
 
+#function to download file from server
 def download_file(sock, filename):
-    sock.send(f"DOWNLOAD {filename}".encode())
-    size_data = sock.recv(1024)
-    if size_data == ("ERROR".encode()):
+    sock.send(f"DOWNLOAD {filename}".encode())  #send the file and encode it
+    size_data = sock.recv(1024)   #receive the file size or error
+    if size_data == "ERROR".encode():
         print("File not found on server.")
         log(f"Download failed: File '{filename}' not found on server.")
         return
 
-    size = int(size_data.decode())
-    sock.send("READY".encode())
-    filepath = f"{DOWNLOAD}/{filename}"
+    size = int(size_data.decode())    #parse file size
+    sock.send("READY".encode())    #send a signal that shows readiness
+    filepath = f"{DOWNLOAD}/{filename}"     #create a file path (local one)
+    #receive file in chuks and write to local file
     with open(filepath, 'wb') as f:
         bytes_received = 0
         while bytes_received < size:
@@ -59,6 +65,7 @@ def download_file(sock, filename):
 
 def main():
     try:
+        #establish TCP connection to server
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((HOST, PORT))
         log(f"Connected to server at {HOST}:{PORT}")
@@ -66,7 +73,7 @@ def main():
         log(f"Connection failed: {e}")
         print("Failed to connect to server.")
         return
-
+    #client interaction
     while True:
         cmd = input("Enter command (LIST, UPLOAD x, DOWNLOAD x, EXIT): ").strip()
         if cmd.upper() == "LIST":
@@ -91,8 +98,9 @@ def main():
         else:
             print("Unknown command.")
             log(f"Unknown command entered: '{cmd}'")
+    #close the socket after exiting the loop
     sock.close()
     log("Socket closed.")
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
