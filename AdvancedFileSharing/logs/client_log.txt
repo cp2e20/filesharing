@@ -32,3 +32,44 @@
 [2025-04-12 18:56:12] Uploaded file 'tala.txt' (0 bytes) to server.
 [2025-04-12 18:56:17] Downloaded file 'tala.txt' (0 bytes) from server.
 [2025-04-12 18:57:58] Requested list of files from server.
+[2025-04-13 01:10:58] Connected to server at localhost:5002
+[2025-04-13 01:13:59] Connected to server at localhost:5002
+[2025-04-13 01:14:04] Requested list of files from server.
+[2025-04-13 01:14:26] Upload failed: File 'mariam.txt' does not exist.
+[2025-04-13 01:15:49] Uploaded file 'mariam.txt' (0 bytes) to server.
+[2025-04-13 01:16:00] Downloaded file 'mariam.txt' (0 bytes) from server.
+[2025-04-13 01:16:31] Requested list of files from server.
+[2025-04-13 01:25:36] Uploaded file 'mariam.txt' (0 bytes) to server.
+[2025-04-13 01:26:10] Uploaded file 'mariam.txt' (26 bytes) to server.
+[2025-04-13 01:26:23] Downloaded file 'mariam.txt' (26 bytes) from server.
+[2025-04-13 01:36:42] Uploaded file 'mariam.txt' (37 bytes) to server.
+[2025-04-13 01:40:26] Connected to server at localhost:5002
+[2025-04-13 01:53:54] Connected to server at localhost:5002
+[2025-04-13 01:54:07] Uploaded file 'mariam.txt' (37 bytes) to server.
+[2025-04-13 01:59:16] Connected to server at localhost:5002
+[2025-04-13 02:03:36] Connected to server at localhost:5002
+[2025-04-13 02:05:18] Connected to server at localhost:5002
+[2025-04-13 02:06:44] Connected to server at localhost:5002
+[2025-04-13 02:11:23] Connected to server at localhost:5002
+[2025-04-13 02:13:55] Connected to server at localhost:5002
+[2025-04-13 02:13:57] Requested list of files from server.
+[2025-04-13 02:14:07] Uploaded file 'mike.txt' (0 bytes) to server.
+[2025-04-13 02:25:35] Connected to server at localhost:5002
+[2025-04-13 02:25:58] Uploaded file 'lana.txt' (0 bytes) to server.
+[2025-04-13 02:48:34] Connected to server at localhost:5002
+[2025-04-13 02:48:41] Unknown command entered: 'UPLAOD mariam.txt'
+[2025-04-13 02:51:13] Connected to server at localhost:5002
+[2025-04-13 02:51:30] Uploaded file 'mariam.txt' (60 bytes) to server.
+[2025-04-13 02:51:58] Uploaded file 'mariam.txt' (65 bytes) to server.
+[2025-04-14 14:23:27] Connected to server at localhost:5002
+[2025-04-14 14:24:56] Connected to server at localhost:5002
+[2025-04-14 14:26:05] Connected to server at localhost:5002
+[2025-04-14 14:28:12] Connected to server at localhost:5002
+[2025-04-14 15:14:24] Connected to server at localhost:5002
+[2025-04-14 15:16:30] Connected to server at localhost:5002
+[2025-04-14 15:19:20] Connected to server at localhost:5002
+[2025-04-14 15:22:02] Connected to server at localhost:5002
+[2025-04-14 15:22:47] Connected to server at localhost:5002
+[2025-04-14 15:22:55] Hash mismatch detected for file 'tala.txt'
+[2025-04-14 15:23:39] Client exited session.
+[2025-04-14 15:23:39] Socket closed.

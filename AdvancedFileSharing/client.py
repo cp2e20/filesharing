@@ -1,5 +1,7 @@
 import socket
 import os
+import hashlib
+import threading
 from datetime import datetime
 
 #server configuration
@@ -31,13 +33,32 @@ def upload_file(sock, path):
         return
 
     size = os.path.getsize(path)     #get the size of file
-    sock.send(f"UPLOAD {filename} {size}".encode()) #send the upload command and encode it
-    #wait for the server to be ready before sending the file 
+
+    ###Compute SHA-256 hash before sending
+    hasher = hashlib.sha256()
+    with open(path, 'rb') as f:
+        while chunk := f.read(1024):
+            hasher.update(chunk)
+    sha256_hash = hasher.hexdigest()
+
+    ### Log the upload details
+    print(f"Uploading {filename} with size {size} and calculated hash {sha256_hash}")
+
+    sock.send(f"UPLOAD {filename} {size}".encode()) ###send the upload with name and size command then encode it
+   
+    ### Wait for server readiness
     if sock.recv(1024) == "READY".encode():
         with open(path, 'rb') as f:
             sock.sendfile(f)
-        print(f"Uploaded {filename}")
-        log(f"Uploaded file '{filename}' ({size} bytes) to server.")
+        received_hash = sock.recv(1024).decode() ###Rreceive hash from serever
+        ###Wait fo final comfirmation
+        if received_hash == sha256_hash:
+            print(f"Uploaded {filename} [Hash verified]")
+            log(f"Uploaded file '{filename}' ({size} bytes) with hash {sha256_hash}")
+        else:
+            print(f"Upload failed: Hash mismatch")
+            log(f"Hash mismatch detected for file '{filename}'")
+        
     else:
         log(f"Upload aborted: Server did not respond with READY for '{filename}'.")
 
@@ -60,8 +81,27 @@ def download_file(sock, filename):
             chunk = sock.recv(1024)
             f.write(chunk)
             bytes_received += len(chunk)
-    print(f"Downloaded {filename}")
-    log(f"Downloaded file '{filename}' ({size} bytes) from server.")
+
+    ### Ask server for hash of the downloaded file
+    sock.send(f"HASH {filename}".encode())
+    server_hash = sock.recv(1024).decode()
+
+    ### Compute local hash
+    hasher = hashlib.sha256()
+    with open(filepath, 'rb') as f:
+        while chunk := f.read(1024):
+            hasher.update(chunk)
+    local_hash = hasher.hexdigest()
+
+    ###Compare client hash computed with the server one just requested before
+    if local_hash == server_hash:
+        print(f"Downloaded {filename} [Hash verified]")
+        log(f"Downloaded '{filename}' ({size} bytes) with matching SHA-256 hash.")
+    else:
+        print("Download completed, but hash mismatch!")
+        log(f"Hash mismatch after downloading '{filename}'.")
+
+
 
 def main():
     try:
@@ -102,5 +142,5 @@ def main():
     sock.close()
     log("Socket closed.")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
