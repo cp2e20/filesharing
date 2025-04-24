@@ -1,111 +1,121 @@
 import socket
 import os
 import hashlib
-import threading
 from datetime import datetime
 
-#server configuration
+# server configuration
 HOST = 'localhost'
 PORT = 5002
-DOWNLOAD = 'downloaded'    #directory to save the dowloaded files
-LOG_FILE = 'logs/client_log.txt'   #log file for clients
+DOWNLOAD = 'downloaded'  # directory to save downloaded files
+LOG_FILE = 'logs/client_log.txt'  # log file for clients
 
-
-#function to log events with a timestamp
+# function to log events
 def log(message):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     with open(LOG_FILE, 'a') as f:
         f.write(f"[{timestamp}] {message}\n")
 
-#function to request the files and show the list of them on the server
+# helper to read a full line ending with '\n'
+def recv_line(sock):
+    buffer = ''
+    while True:
+        data = sock.recv(1024).decode()
+        if not data:
+            break
+        buffer += data
+        if '\n' in buffer:
+            line, _ = buffer.split('\n', 1)
+            return line.strip()
+    return buffer.strip()
+
+# list files on server
 def list_files(sock):
-    sock.send("LIST".encode())   #send the list command to the server
-    files = sock.recv(4096).decode()    #receive and decode the file list
+    sock.send("LIST\n".encode())
+    files = sock.recv(4096).decode()
     print("Files on Server:\n", files)
     log("Requested list of files from server.")
 
-# function to upload the file to the server
+# upload file
 def upload_file(sock, path):
-    filename = os.path.basename(path)  #extract filename
-    if not os.path.exists(path):    #check if the file exists before you upload
+    filename = os.path.basename(path)
+    if not os.path.exists(path):
         print("File does not exist.")
         log(f"Upload failed: File '{path}' does not exist.")
         return
 
-    size = os.path.getsize(path)     #get the size of file
+    size = os.path.getsize(path)
+    print(f"File size: {size} bytes")  # Debug: check size
 
-    ###Compute SHA-256 hash before sending
+    # Compute SHA-256 hash
     hasher = hashlib.sha256()
     with open(path, 'rb') as f:
         while chunk := f.read(1024):
             hasher.update(chunk)
     sha256_hash = hasher.hexdigest()
 
-    ### Log the upload details
-    print(f"Uploading {filename} with size {size} and calculated hash {sha256_hash}")
+    print(f"Uploading {filename} with size {size} and hash {sha256_hash}")
 
-    sock.send(f"UPLOAD {filename} {size}".encode()) ###send the upload with name and size command then encode it
-   
-    ### Wait for server readiness
-    if sock.recv(1024) == "READY".encode():
+    # Send command with newline
+    sock.send(f"UPLOAD {filename} {size}\n".encode())
+
+    # Wait for server's response using recv_line
+    response = recv_line(sock)
+    if response == "READY":
+        # Send file in chunks
         with open(path, 'rb') as f:
-            sock.sendfile(f)
-        received_hash = sock.recv(1024).decode() ###Rreceive hash from serever
-        ###Wait fo final comfirmation
+            while chunk := f.read(1024):
+                sock.send(chunk)
+
+        # Receive hash from server cleanly
+        received_hash = recv_line(sock)
         if received_hash == sha256_hash:
             print(f"Uploaded {filename} [Hash verified]")
             log(f"Uploaded file '{filename}' ({size} bytes) with hash {sha256_hash}")
         else:
-            print(f"Upload failed: Hash mismatch")
-            log(f"Hash mismatch detected for file '{filename}'")
-        
+            print("Hash mismatch after upload.")
+            log(f"Hash mismatch for '{filename}'. Client hash: {sha256_hash}, Server hash: {received_hash}")
     else:
-        log(f"Upload aborted: Server did not respond with READY for '{filename}'.")
+        print("Server did not respond with READY.")
 
-#function to download file from server
+# download file
 def download_file(sock, filename):
-    sock.send(f"DOWNLOAD {filename}".encode())  #send the file and encode it
-    size_data = sock.recv(1024)   #receive the file size or error
-    if size_data == "ERROR".encode():
+    sock.send(f"DOWNLOAD {filename}\n".encode())
+    size_data = recv_line(sock)
+    if size_data == "ERROR":
         print("File not found on server.")
         log(f"Download failed: File '{filename}' not found on server.")
         return
-
-    size = int(size_data.decode())    #parse file size
-    sock.send("READY".encode())    #send a signal that shows readiness
-    filepath = f"{DOWNLOAD}/{filename}"     #create a file path (local one)
-    #receive file in chuks and write to local file
+    size = int(size_data)
+    sock.send("READY\n".encode())
+    filepath = os.path.join(DOWNLOAD, filename)
     with open(filepath, 'wb') as f:
         bytes_received = 0
         while bytes_received < size:
             chunk = sock.recv(1024)
+            if not chunk:
+                break
             f.write(chunk)
             bytes_received += len(chunk)
 
-    ### Ask server for hash of the downloaded file
-    sock.send(f"HASH {filename}".encode())
-    server_hash = sock.recv(1024).decode()
+    # Receive hash of downloaded file
+    server_hash = recv_line(sock)
 
-    ### Compute local hash
+    # Compute local hash
     hasher = hashlib.sha256()
     with open(filepath, 'rb') as f:
         while chunk := f.read(1024):
             hasher.update(chunk)
     local_hash = hasher.hexdigest()
 
-    ###Compare client hash computed with the server one just requested before
     if local_hash == server_hash:
         print(f"Downloaded {filename} [Hash verified]")
-        log(f"Downloaded '{filename}' ({size} bytes) with matching SHA-256 hash.")
+        log(f"Downloaded '{filename}' ({size} bytes) with matching hash.")
     else:
-        print("Download completed, but hash mismatch!")
-        log(f"Hash mismatch after downloading '{filename}'.")
-
-
+        print("Hash mismatch after download.")
+        log(f"Hash mismatch for '{filename}': local {local_hash}, server {server_hash}")
 
 def main():
     try:
-        #establish TCP connection to server
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.connect((HOST, PORT))
         log(f"Connected to server at {HOST}:{PORT}")
@@ -113,7 +123,7 @@ def main():
         log(f"Connection failed: {e}")
         print("Failed to connect to server.")
         return
-    #client interaction
+
     while True:
         cmd = input("Enter command (LIST, UPLOAD x, DOWNLOAD x, EXIT): ").strip()
         if cmd.upper() == "LIST":
@@ -138,7 +148,6 @@ def main():
         else:
             print("Unknown command.")
             log(f"Unknown command entered: '{cmd}'")
-    #close the socket after exiting the loop
     sock.close()
     log("Socket closed.")
 

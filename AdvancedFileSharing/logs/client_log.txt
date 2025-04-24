@@ -73,3 +73,48 @@
 [2025-04-14 15:22:55] Hash mismatch detected for file 'tala.txt'
 [2025-04-14 15:23:39] Client exited session.
 [2025-04-14 15:23:39] Socket closed.
+[2025-04-23 13:49:43] Connected to server at localhost:5002
+[2025-04-23 13:50:04] Download failed: File 'mariam.txt' not found on server.
+[2025-04-23 13:50:45] Downloaded 'tala.txt' (0 bytes) with matching SHA-256 hash.
+[2025-04-23 13:51:36] Hash mismatch detected for file 'testagain.txt'
+[2025-04-23 14:00:10] Hash mismatch detected for file 'test.txt'
+[2025-04-23 14:00:34] Upload aborted: Server did not respond with READY for 'test.txt'.
+[2025-04-23 22:26:59] Connected to server at localhost:5002
+[2025-04-23 22:27:51] Hash mismatch detected for file 'mike.txt'
+[2025-04-23 22:29:34] Connected to server at localhost:5002
+[2025-04-23 22:41:42] Unknown command entered: 'upoload mariam.txt'
+[2025-04-23 22:42:11] Hash mismatch detected for file 'test.txt'
+[2025-04-23 23:02:13] Connected to server at localhost:5002
+[2025-04-23 23:03:30] Hash mismatch detected for file 'mikey.txt'
+[2025-04-23 23:07:52] Connected to server at localhost:5002
+[2025-04-23 23:07:57] Hash mismatch detected for file 'tala.txt'
+[2025-04-23 23:16:28] Connected to server at localhost:5002
+[2025-04-23 23:16:35] Hash mismatch detected for file 'mikey.txt'
+[2025-04-23 23:21:39] Unknown command entered: 'python client.py'
+[2025-04-23 23:22:00] Connected to server at localhost:5002
+[2025-04-23 23:22:11] Hash mismatch detected for file 'mikey.txt'
+[2025-04-23 23:24:03] Connected to server at localhost:5002
+[2025-04-23 23:24:11] Hash mismatch detected for file 'try.txt'
+[2025-04-23 23:46:28] Connected to server at localhost:5002
+[2025-04-23 23:46:36] Hash mismatch detected for file 'try.txt'
+[2025-04-23 23:47:16] Connected to server at localhost:5002
+[2025-04-23 23:47:23] Hash mismatch detected for file 'try.txt'
+[2025-04-23 23:53:37] Connected to server at localhost:5002
+[2025-04-24 00:01:05] Connected to server at localhost:5002
+[2025-04-24 00:06:54] Connected to server at localhost:5002
+[2025-04-24 00:06:58] Uploaded file 'mike.txt' (3 bytes) with hash a1a3b09875f9e9acade5623e1cca680009a6c9e0452489931cfa5b0041f4d290
+[2025-04-24 00:12:07] Connected to server at localhost:5002
+[2025-04-24 00:12:29] Connected to server at localhost:5002
+[2025-04-24 00:12:36] Uploaded file 'mariam.txt' (60 bytes) with hash 14711b09fe8f916bb9ceefd14d2af18a686ffa19109967c7f14a7b64576712e7
+[2025-04-24 20:50:25] Connected to server at localhost:5002
+[2025-04-24 20:50:31] Uploaded file 'trying.txt' (0 bytes) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2025-04-24 20:50:43] Uploaded file 'trying.txt' (0 bytes) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2025-04-24 20:51:00] Download failed: File 'trying.txt' not found on server.
+[2025-04-24 20:51:21] Downloaded 'try.txt' (0 bytes) with matching hash.
+[2025-04-24 20:54:17] Downloaded 'trying_v2.txt' (0 bytes) with matching hash.
+[2025-04-24 20:59:21] Client exited session.
+[2025-04-24 20:59:21] Socket closed.
+[2025-04-24 20:59:32] Connected to server at localhost:5002
+[2025-04-24 20:59:33] Requested list of files from server.
+[2025-04-24 21:03:04] Client exited session.
+[2025-04-24 21:03:04] Socket closed.

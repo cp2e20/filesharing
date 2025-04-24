@@ -67,3 +67,53 @@
 [2025-04-13 02:51:30.540588] Received uploaded\mariam.txt from ('127.0.0.1', 60127)
 [2025-04-13 02:51:58.231067] Archiving existing file: uploaded\mariam.txt -> uploaded\VersionHistory\mariam_v1.txt
 [2025-04-13 02:51:58.258669] Received uploaded\mariam_v2.txt from ('127.0.0.1', 60127)
+[2025-04-23 13:49:43.852107] Connected by ('127.0.0.1', 56305)
+[2025-04-23 13:50:45.413169] Sent tala.txt to ('127.0.0.1', 56305) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2025-04-23 13:51:36.226756] Archiving existing file: uploaded\testagain.txt -> uploaded\VersionHistory\testagain_v1.txt
+[2025-04-23 13:51:36.235055] Received testagain.txt from ('127.0.0.1', 56305) [Hash OK]
+[2025-04-23 13:51:36.236053] Received uploaded\testagain_v2.txt from ('127.0.0.1', 56305)
+[2025-04-23 14:00:10.875981] Received test.txt from ('127.0.0.1', 56305) [Hash OK]
+[2025-04-23 14:00:10.875981] Received uploaded\test.txt from ('127.0.0.1', 56305)
+[2025-04-23 14:00:34.065875] Archiving existing file: uploaded\test.txt -> uploaded\VersionHistory\test_v1.txt
+[2025-04-23 22:26:59.366695] Connected by ('127.0.0.1', 61711)
+[2025-04-23 22:27:51.225430] Error with ('127.0.0.1', 61711): local variable 'filepath' referenced before assignment
+[2025-04-23 22:29:34.063450] Connected by ('127.0.0.1', 61767)
+[2025-04-23 22:42:11.511771] Error with ('127.0.0.1', 61767): local variable 'filepath' referenced before assignment
+[2025-04-23 23:02:13.211700] Connected by ('127.0.0.1', 62338)
+[2025-04-23 23:03:30.570654] Error with ('127.0.0.1', 62338): local variable 'filepath' referenced before assignment
+[2025-04-23 23:07:52.167488] Connected by ('127.0.0.1', 62373)
+[2025-04-23 23:07:57.211566] Archiving existing file: uploaded\tala.txt -> uploaded\VersionHistory\tala_v1.txt
+[2025-04-23 23:07:57.215525] Error with ('127.0.0.1', 62373): local variable 'filepath' referenced before assignment
+[2025-04-23 23:16:28.287866] Connected by ('127.0.0.1', 62722)
+[2025-04-23 23:16:35.821272] Archiving existing file: uploaded\mikey.txt -> uploaded\VersionHistory\mikey_v1.txt
+[2025-04-23 23:16:35.832316] Error with ('127.0.0.1', 62722): local variable 'filepath' referenced before assignment
+[2025-04-23 23:22:00.441004] Connected by ('127.0.0.1', 62802)
+[2025-04-23 23:22:11.464500] Error with ('127.0.0.1', 62802): local variable 'filepath' referenced before assignment
+[2025-04-23 23:24:03.199646] Connected by ('127.0.0.1', 62812)
+[2025-04-23 23:24:11.186695] Error with ('127.0.0.1', 62812): local variable 'filepath' referenced before assignment
+[2025-04-23 23:46:28.450154] Connected by ('127.0.0.1', 63083)
+[2025-04-23 23:46:36.282840] Archiving existing file: uploaded\try.txt -> uploaded\VersionHistory\try_v1.txt
+[2025-04-23 23:46:36.289073] Error with ('127.0.0.1', 63083): local variable 'filepath' referenced before assignment
+[2025-04-23 23:47:16.843752] Connected by ('127.0.0.1', 63088)
+[2025-04-23 23:47:23.510310] Error with ('127.0.0.1', 63088): local variable 'filepath' referenced before assignment
+[2025-04-23 23:53:37.632723] Connected by ('127.0.0.1', 63199)
+[2025-04-23 23:54:08.445646] Archiving existing file: uploaded\try.txt -> uploaded\VersionHistory\try_v1.txt
+[2025-04-23 23:54:08.454932] Error with ('127.0.0.1', 63199): [WinError 183] Cannot create a file when that file already exists: 'uploaded\\try.txt' -> 'uploaded\\VersionHistory\\try_v1.txt'
+[2025-04-24 00:01:05.963784] Connected by ('127.0.0.1', 63393)
+[2025-04-24 00:01:28.164674] Archiving existing file: uploaded\try.txt -> uploaded\VersionHistory\try_v1.txt
+[2025-04-24 00:01:28.165566] Error with ('127.0.0.1', 63393): [WinError 183] Cannot create a file when that file already exists: 'uploaded\\try.txt' -> 'uploaded\\VersionHistory\\try_v1.txt'
+[2025-04-24 00:06:54.437751] Connected by ('127.0.0.1', 63530)
+[2025-04-24 00:06:58.979616] Archiving existing file: uploaded\mike.txt -> uploaded\VersionHistory\mike_v1.txt
+[2025-04-24 00:07:11.326915] Archiving existing file: uploaded\try.txt -> uploaded\VersionHistory\try_v1.txt
+[2025-04-24 00:07:11.328911] Error with ('127.0.0.1', 63530): [WinError 183] Cannot create a file when that file already exists: 'uploaded\\try.txt' -> 'uploaded\\VersionHistory\\try_v1.txt'
+[2025-04-24 00:12:07.836635] Connected by ('127.0.0.1', 63680)
+[2025-04-24 00:12:15.597854] Archiving existing file: uploaded\try.txt -> uploaded\VersionHistory\try_v1.txt
+[2025-04-24 00:12:15.599143] Error with ('127.0.0.1', 63680): [WinError 183] Cannot create a file when that file already exists: 'uploaded\\try.txt' -> 'uploaded\\VersionHistory\\try_v1.txt'
+[2025-04-24 00:12:29.174315] Connected by ('127.0.0.1', 63683)
+[2025-04-24 00:12:54.203292] Archiving existing file: uploaded\try.txt -> uploaded\VersionHistory\try_v1.txt
+[2025-04-24 00:12:54.205284] Error with ('127.0.0.1', 63683): [WinError 183] Cannot create a file when that file already exists: 'uploaded\\try.txt' -> 'uploaded\\VersionHistory\\try_v1.txt'
+[2025-04-24 20:50:25.513992] Connected by ('127.0.0.1', 60087)
+[2025-04-24 20:50:43.543110] Archiving existing file: uploaded\trying.txt -> uploaded\VersionHistory\trying_v1.txt
+[2025-04-24 20:51:21.310693] Sent try.txt to ('127.0.0.1', 60087) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2025-04-24 20:54:17.707013] Sent trying_v2.txt to ('127.0.0.1', 60087) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2025-04-24 20:59:32.068997] Connected by ('127.0.0.1', 56595)
