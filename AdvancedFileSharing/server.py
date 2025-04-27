@@ -3,6 +3,7 @@ import threading
 import os
 import hashlib
 from datetime import datetime
+import json
 
 # Server configuration
 HOST = 'localhost'
