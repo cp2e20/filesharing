@@ -9,9 +9,25 @@ HOST = 'localhost'
 PORT = 5002
 UPLOAD = 'uploaded'  # Directory where uploaded files will be saved
 LOG_FILE = 'logs/server_log.txt'  # Path to the log file
+CHECKPOINT_FILE = 'logs/download_checkpoints.json'  # File to store download progress
+
 
 os.makedirs("logs", exist_ok=True)
 os.makedirs(UPLOAD, exist_ok=True)  # Ensure upload directory exists
+
+# Load existing checkpoints
+def load_checkpoints():
+    if os.path.exists(CHECKPOINT_FILE):
+        with open(CHECKPOINT_FILE, 'r') as f:
+            try:
+                return json.load(f)
+            except json.JSONDecodeError:
+                return {}
+    return {}
+# Save checkpoints to file
+def save_checkpoints(checkpoints):
+    with open(CHECKPOINT_FILE, 'w') as f:
+        json.dump(checkpoints, f)
 
 # Logs a message with timestamp
 def log(msg):
@@ -32,7 +48,11 @@ def recv_line(conn):
 
 # Handles communication with a single client
 def handle_client(conn, addr):
+    conn.settimeout(30.0)  # 30 second timeout
+
     log(f"Connected by {addr}")
+    checkpoints = load_checkpoints()
+
     try:
         while True:
             # Read command line until newline
@@ -103,12 +123,25 @@ def handle_client(conn, addr):
                 if os.path.exists(filepath):
                     size = os.path.getsize(filepath)
                     conn.send(f"{size}\n".encode())
-                    # Wait for client to send "READY"
+                    
+                    # Wait for client to send "READY" or "RESUME"
                     ack = recv_line(conn)
-                    if ack == "READY":
+                    if ack.startswith("READY") or ack.startswith("RESUME"):
+                        if ack.startswith("RESUME"):
+                            # Client wants to resume download
+                            bytes_received = int(ack.split()[1])
+                            log(f"Resuming download of {filename} from byte {bytes_received}")
+                        else:
+                            bytes_received = 0
+                        
                         with open(filepath, 'rb') as f:
-                            while chunk := f.read(1024):
+                            f.seek(bytes_received)
+                            while True:
+                                chunk = f.read(1024)
+                                if not chunk:
+                                    break
                                 conn.send(chunk)
+                        
                         # Send hash of the file
                         hasher = hashlib.sha256()
                         with open(filepath, 'rb') as f:
@@ -120,6 +153,19 @@ def handle_client(conn, addr):
                 else:
                     conn.send("ERROR\n".encode())
 
+            elif command == "CHECKPOINT":
+                # Store download progress
+                filename = cmd_parts[1]
+                bytes_received = int(cmd_parts[2])
+                client_id = f"{addr[0]}:{addr[1]}"
+                checkpoints[client_id] = {
+                    "filename": filename,
+                    "bytes_received": bytes_received,
+                    "timestamp": datetime.now().isoformat()
+                }
+                save_checkpoints(checkpoints)
+                conn.send("OK\n".encode())
+
     except Exception as e:
         log(f"Error with {addr}: {e}")
     finally:
@@ -127,6 +173,8 @@ def handle_client(conn, addr):
 
 def main():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 8192)  # 8KB send buffer
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 8192)  # 8KB receive buffer
     s.bind((HOST, PORT))
     s.listen()
     print(f"[SERVER STARTED] Listening on {HOST}:{PORT}")

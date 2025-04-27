@@ -117,3 +117,60 @@
 [2025-04-24 20:51:21.310693] Sent try.txt to ('127.0.0.1', 60087) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 [2025-04-24 20:54:17.707013] Sent trying_v2.txt to ('127.0.0.1', 60087) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 [2025-04-24 20:59:32.068997] Connected by ('127.0.0.1', 56595)
+[2025-04-27 14:21:58.158529] Connected by ('127.0.0.1', 53568)
+[2025-04-27 14:22:22.273634] Sent new.txt to ('127.0.0.1', 53568) with hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2025-04-27 14:22:53.584121] Error with ('127.0.0.1', 53568): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 14:48:29.220946] Connected by ('127.0.0.1', 54798)
+[2025-04-27 14:49:12.177063] Error with ('127.0.0.1', 54798): timed out
+[2025-04-27 14:54:26.596280] Connected by ('127.0.0.1', 55043)
+[2025-04-27 14:54:29.782134] Error with ('127.0.0.1', 55043): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 14:55:35.434101] Connected by ('127.0.0.1', 55079)
+[2025-04-27 14:56:07.625037] Error with ('127.0.0.1', 55079): timed out
+[2025-04-27 15:00:12.650753] Connected by ('127.0.0.1', 55179)
+[2025-04-27 15:00:25.199729] Resuming download of signup.mp4 from byte 1048576
+[2025-04-27 15:00:25.224795] Error with ('127.0.0.1', 55179): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 15:07:32.832721] Connected by ('127.0.0.1', 55255)
+[2025-04-27 15:07:41.221971] Error with ('127.0.0.1', 55255): 'NoneType' object has no attribute 'startswith'
+[2025-04-27 15:08:14.271170] Connected by ('127.0.0.1', 55258)
+[2025-04-27 15:08:16.813398] Error with ('127.0.0.1', 55258): 'NoneType' object has no attribute 'startswith'
+[2025-04-27 15:08:27.268222] Connected by ('127.0.0.1', 55262)
+[2025-04-27 15:08:28.835811] Error with ('127.0.0.1', 55262): 'NoneType' object has no attribute 'startswith'
+[2025-04-27 15:08:46.248347] Connected by ('127.0.0.1', 55265)
+[2025-04-27 15:08:48.516879] Resuming download of signup.mp4 from byte 2097152
+[2025-04-27 15:08:48.524682] Error with ('127.0.0.1', 55265): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 15:09:47.472099] Connected by ('127.0.0.1', 55280)
+[2025-04-27 15:09:49.103455] Resuming download of signup.mp4 from byte 2097152
+[2025-04-27 15:09:49.131643] Error with ('127.0.0.1', 55280): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 15:11:56.290050] Connected by ('127.0.0.1', 55314)
+[2025-04-27 15:11:58.132074] Resuming download of signup.mp4 from byte 3145728
+[2025-04-27 15:11:58.802458] Sent signup.mp4 to ('127.0.0.1', 55314) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:12:28.815607] Error with ('127.0.0.1', 55314): timed out
+[2025-04-27 15:18:08.570444] Connected by ('127.0.0.1', 55382)
+[2025-04-27 15:18:14.825029] Sent signup.mp4 to ('127.0.0.1', 55382) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:18:30.415816] Connected by ('127.0.0.1', 55387)
+[2025-04-27 15:18:33.909293] Sent signup.mp4 to ('127.0.0.1', 55387) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:19:03.911204] Error with ('127.0.0.1', 55387): timed out
+[2025-04-27 15:21:16.234811] Connected by ('127.0.0.1', 55412)
+[2025-04-27 15:21:18.567743] Sent signup.mp4 to ('127.0.0.1', 55412) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:21:23.942609] Sent signup.mp4 to ('127.0.0.1', 55412) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:21:36.972062] Error with ('127.0.0.1', 55412): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 15:21:41.555478] Connected by ('127.0.0.1', 55413)
+[2025-04-27 15:21:54.842553] Resuming download of signup.mp4 from byte 21481472
+[2025-04-27 15:21:55.174355] Sent signup.mp4 to ('127.0.0.1', 55413) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:22:25.179468] Error with ('127.0.0.1', 55413): timed out
+[2025-04-27 15:22:34.156817] Connected by ('127.0.0.1', 55416)
+[2025-04-27 15:22:39.021271] Archiving existing file: uploaded\new.txt -> uploaded\VersionHistory\new_v1.txt
+[2025-04-27 15:22:44.975570] Sent mariam_v2.txt to ('127.0.0.1', 55416) with hash 99d5b96ff42503904a511585b8ea6aabee8336c132cad4a5df93318458ed90fd
+[2025-04-27 15:24:50.355230] Connected by ('127.0.0.1', 55451)
+[2025-04-27 15:25:06.680496] Connected by ('127.0.0.1', 55459)
+[2025-04-27 15:25:18.757597] Sent signup.mp4 to ('127.0.0.1', 55459) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:25:25.077745] Connected by ('127.0.0.1', 55464)
+[2025-04-27 15:25:27.825643] Resuming download of signup.mp4 from byte 39018663
+[2025-04-27 15:25:27.881377] Sent signup.mp4 to ('127.0.0.1', 55464) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:25:28.609320] Error with ('127.0.0.1', 55451): timed out
+[2025-04-27 15:25:44.828531] Connected by ('127.0.0.1', 55472)
+[2025-04-27 15:25:54.283843] Error with ('127.0.0.1', 55472): [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 15:25:57.883989] Error with ('127.0.0.1', 55464): timed out
+[2025-04-27 15:25:59.906496] Connected by ('127.0.0.1', 55477)
+[2025-04-27 15:26:01.939491] Resuming download of signup.mp4 from byte 18938880
+[2025-04-27 15:26:02.745663] Sent signup.mp4 to ('127.0.0.1', 55477) with hash e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76

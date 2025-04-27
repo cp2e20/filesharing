@@ -118,3 +118,53 @@
 [2025-04-24 20:59:33] Requested list of files from server.
 [2025-04-24 21:03:04] Client exited session.
 [2025-04-24 21:03:04] Socket closed.
+[2025-04-27 14:21:05] Connected to server
+[2025-04-27 14:21:05] Failed to list files: [WinError 10054] An existing connection was forcibly closed by the remote host
+[2025-04-27 14:21:43] Connection failed: [WinError 10061] No connection could be made because the target machine actively refused it
+[2025-04-27 14:21:58] Connected to server
+[2025-04-27 14:21:58] Listed files from server
+[2025-04-27 14:22:10] Uploaded new.txt successfully
+[2025-04-27 14:22:10] Listed files from server
+[2025-04-27 14:22:25] Downloaded new.txt successfully
+[2025-04-27 14:22:29] Listed files from server
+[2025-04-27 14:22:31] Listed files from server
+[2025-04-27 14:42:37] Connected to server at localhost:5002
+[2025-04-27 14:48:29] Connected to server at localhost:5002
+[2025-04-27 14:48:42] Uploaded file 'signup.mp4' (39018663 bytes)
+[2025-04-27 14:54:26] Connected to server at localhost:5002
+[2025-04-27 14:55:35] Connected to server at localhost:5002
+[2025-04-27 14:55:37] DOWNLOAD command failed: Invalid format.
+[2025-04-27 14:55:52] DOWNLOAD command failed: Invalid format.
+[2025-04-27 15:00:12] Connected to server at localhost:5002
+[2025-04-27 15:07:32] Connected to server at localhost:5002
+[2025-04-27 15:08:14] Connected to server at localhost:5002
+[2025-04-27 15:08:27] Connected to server at localhost:5002
+[2025-04-27 15:08:46] Connected to server at localhost:5002
+[2025-04-27 15:09:47] Connected to server at localhost:5002
+[2025-04-27 15:11:56] Connected to server at localhost:5002
+[2025-04-27 15:11:58] Hash mismatch for 'signup.mp4': local 4217a975359e40dc08c03678dd1855c4e34f0bda5d8e17949fe74d1fe4f68eb8, server e54e06308317c62166c805cc29f15b634425bcb407c3295ac30dd29385bfcc76
+[2025-04-27 15:18:08] Connected to server at localhost:5002
+[2025-04-27 15:18:14] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:18:30] Connected to server at localhost:5002
+[2025-04-27 15:18:33] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:21:16] Connected to server at localhost:5002
+[2025-04-27 15:21:18] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:21:23] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:21:41] Connected to server at localhost:5002
+[2025-04-27 15:21:55] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:22:34] Connected to server
+[2025-04-27 15:22:34] Listed files from server
+[2025-04-27 15:22:40] Uploaded new.txt successfully
+[2025-04-27 15:22:40] Listed files from server
+[2025-04-27 15:22:46] Downloaded mariam_v2.txt successfully
+[2025-04-27 15:22:49] Listed files from server
+[2025-04-27 15:24:50] Connected to server at localhost:5002
+[2025-04-27 15:24:58] Uploaded file 'signup.mp4' (39018663 bytes)
+[2025-04-27 15:25:06] Connected to server at localhost:5002
+[2025-04-27 15:25:25] Connected to server at localhost:5002
+[2025-04-27 15:25:27] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:25:44] Connected to server at localhost:5002
+[2025-04-27 15:25:59] Connected to server at localhost:5002
+[2025-04-27 15:26:02] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 15:26:10] Client exited session.
+[2025-04-27 15:26:10] Socket closed.
