@@ -165,7 +165,17 @@ def handle_client(conn, addr):
                 }
                 save_checkpoints(checkpoints)
                 conn.send("OK\n".encode())
-
+                
+            elif command == "DELETE":
+                filename = cmd_parts[1]
+                filepath = os.path.join(UPLOAD, filename)
+                if os.path.exists(filepath):
+                    os.remove(filepath)
+                    conn.send("DELETED\n".encode())
+                    log(f"Deleted file '{filename}' for {addr}")
+                else:
+                    conn.send("ERROR\n".encode())
+                    log(f"Failed to delete '{filename}' - file not found")
     except Exception as e:
         log(f"Error with {addr}: {e}")
     finally:
