@@ -168,3 +168,17 @@
 [2025-04-27 15:26:02] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
 [2025-04-27 15:26:10] Client exited session.
 [2025-04-27 15:26:10] Socket closed.
+[2025-04-27 21:06:01] Connected to server at localhost:5002
+[2025-04-27 21:06:18] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.
+[2025-04-27 21:27:11] Connected to server as user
+[2025-04-27 21:27:11] Listed files from server
+[2025-04-27 21:27:23] Uploaded new.txt successfully
+[2025-04-27 21:27:23] Listed files from server
+[2025-04-27 21:27:47] Downloaded lana.txt successfully
+[2025-04-27 21:28:04] Connected to server as admin
+[2025-04-27 21:28:04] Listed files from server
+[2025-04-27 21:28:19] Deleted file 'new_v2.txt' successfully
+[2025-04-27 21:28:19] Listed files from server
+[2025-04-27 21:28:56] Connected to server at localhost:5002
+[2025-04-27 21:29:10] Downloaded 'new.txt' (0 bytes) with matching hash.
+[2025-04-27 21:29:25] Downloaded 'signup.mp4' (39018663 bytes) with matching hash.

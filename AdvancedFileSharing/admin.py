@@ -19,7 +19,6 @@ def log(message, gui_log_widget=None):
         gui_log_widget.insert(tk.END, f"[{timestamp}] {message}\n")
         gui_log_widget.see(tk.END)
 
-
 class LoginWindow:
     def __init__(self, root, on_success):
         self.root = root
@@ -56,9 +55,8 @@ class LoginWindow:
         else:
             messagebox.showerror("Login Failed", "Invalid username or password.")
 
-
 class FileClientApp:
-    def _init_(self, root, username, role):
+    def __init__(self, root, username, role):
         self.root = root
         self.username = username
         self.role = role.strip().lower()
@@ -67,7 +65,6 @@ class FileClientApp:
         self.root.resizable(False, False)
         self.root.configure(bg="#f0f4f7")
         self.sock = None
-        
 
         btn_style = {
             "font": ("Segoe UI", 9, "bold"),
@@ -105,7 +102,6 @@ class FileClientApp:
         self.log_text = tk.Text(root, height=6, font=("Consolas", 9), bg="white")
         self.log_text.pack(fill="both", padx=20, pady=(0, 10))
 
-       ###Here is the role based access
         if self.role == "admin":
             self.delete_btn = tk.Button(root, text="Delete File", bg="#dc3545", font=("Segoe UI", 9, "bold"), command=self.delete_file)
             self.delete_btn.pack(fill="x", padx=20, pady=(5, 0))
@@ -113,30 +109,25 @@ class FileClientApp:
             self.view_logs_btn = tk.Button(root, text="View Logs", bg="#6c757d", font=("Segoe UI", 9, "bold"), command=self.view_logs)
             self.view_logs_btn.pack(fill="x", padx=20, pady=(5, 10))
 
- 
-
-def delete_file(self):
-    selected = self.file_listbox.curselection()
-    if not selected:
-        messagebox.showwarning("Warning", "No file selected to delete.")
-        return
-    filename = self.file_listbox.get(selected[0])
-    try:
-        self.sock.send(f"DELETE {filename}\n".encode())
-        response = self.recv_line()
-        if response == "DELETED":
-            messagebox.showinfo("Success", f"File '{filename}' deleted successfully.")
-            log(f"Deleted file '{filename}' successfully", self.log_text)   # << ADD THIS
-            self.list_files()
-        else:
-            messagebox.showerror("Error", "Failed to delete file.")
-            log(f"Failed to delete file '{filename}'", self.log_text)
-    except Exception as e:
-        messagebox.showerror("Error", str(e))
-        log(f"Delete failed: {e}", self.log_text)
-
-
-
+    def delete_file(self):
+        selected = self.file_listbox.curselection()
+        if not selected:
+            messagebox.showwarning("Warning", "No file selected to delete.")
+            return
+        filename = self.file_listbox.get(selected[0])
+        try:
+            self.sock.send(f"DELETE {filename}\n".encode())
+            response = self.recv_line()
+            if response == "DELETED":
+                messagebox.showinfo("Success", f"File '{filename}' deleted successfully.")
+                log(f"Deleted file '{filename}' successfully", self.log_text)
+                self.list_files()
+            else:
+                messagebox.showerror("Error", "Failed to delete file.")
+                log(f"Failed to delete file '{filename}'", self.log_text)
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+            log(f"Delete failed: {e}", self.log_text)
 
     def view_logs(self):
         os.system(f"notepad {LOG_FILE}")
@@ -266,7 +257,6 @@ def delete_file(self):
             log(f"Download failed: {e}", self.log_text)
             messagebox.showerror("Download Error", str(e))
 
-#here i also added
 def start_app(username, role):
     main_root = tk.Tk()
     app = FileClientApp(main_root, username, role)
